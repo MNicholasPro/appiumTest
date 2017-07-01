@@ -3,16 +3,13 @@ package test;
 import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.util.concurrent.TimeUnit;
 
 import commonController.SwipeTo;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.Assert;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.remote.MobileCapabilityType;
 import org.testng.annotations.AfterClass;
@@ -37,20 +34,36 @@ public class CaocaoDriverTest {
 	@Test
 	public void test() throws IOException{
 
-		for(int i = 0;i < 3;i ++) {
-			try {
-				Thread.sleep(3000);
-			} catch (InterruptedException e) {
+		/*设置左滑，滑动1秒，滑动3次*/
+		SwipeTo.swipeToLeft(driver,500, 3);
 
-			}
-//		SwipeTo.swipeToLeft(driver,60,3);
-			driver.swipe(450, 300, 50, 300, 500);
+		/*寻找元素进行点击*/
+		driver.findElement(By.id("cn.caocaokeji.driver:id/btn_start_experience")).click();
+		driver.findElement(By.id("cn.caocaokeji.driver:id/bt_sign_up")).click();
+
+		try {
+			Thread.sleep(2000);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+
 		}
 
-		WebElement startWork = driver.findElement(By.id("cn.caocaokeji.driver:id/btn_start_experience"));
-		startWork.click();
-		WebElement register = driver.findElement(By.id("cn.caocaokeji.driver:id/bt_sign_up"));
-		register.click();
+		/*进行司机注册输入手机号*/
+		WebElement textPhone = driver.findElement(By.id("cn.caocaokeji.driver:id/et_phone"));
+		textPhone.click();
+		textPhone.sendKeys("12345678901");
+
+		/*获取验证码*/
+		driver.findElement(By.id("cn.caocaokeji.driver:id/bt_get_validate_code")).click();
+
+		/*进行司机注册输入验证码*/
+		WebElement textPhoneCode = driver.findElement(By.id("cn.caocaokeji.driver:id/et_code"));
+		textPhoneCode.click();
+		textPhoneCode.sendKeys("1234");
+
+		/*点击下一步完成*/
+		driver.findElement(By.id("cn.caocaokeji.driver:id/bt_confirm")).click();
+
 
 	}
 
