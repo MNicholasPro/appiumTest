@@ -5,6 +5,7 @@ import java.net.MalformedURLException;
 import java.net.URL;
 
 import commonController.SwipeTo;
+import getPageObject.GetEnumDriverResgisterElements;
 import io.appium.java_client.android.AndroidElement;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -15,10 +16,11 @@ import io.appium.java_client.remote.MobileCapabilityType;
 import org.testng.annotations.AfterClass;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import pageObject.EnumDriverResgisterElements;
 
-public class CaocaoDriverTest {
+public class CaocaoDriverRegisterTest {
 //	private static AppiumDriver driver;
-	private static AndroidDriver<AndroidElement> driver;
+	public static AndroidDriver<AndroidElement> driver;
 
 	@BeforeClass
 	public static void setUp() throws MalformedURLException{
@@ -33,6 +35,8 @@ public class CaocaoDriverTest {
 
 	@Test
 	public void test() throws IOException{
+
+		GetEnumDriverResgisterElements getEnumDriverResgisterElements = new GetEnumDriverResgisterElements();
 
 		/*设置左滑，滑动1秒，滑动3次*/
 		SwipeTo.swipeToLeft(driver,500, 3);
@@ -49,9 +53,13 @@ public class CaocaoDriverTest {
 		}
 
 		/*进行司机注册输入手机号*/
-		WebElement textPhone = driver.findElement(By.id("cn.caocaokeji.driver:id/et_phone"));
+		/*WebElement textPhone = driver.findElement(By.id("cn.caocaokeji.driver:id/et_phone"));
 		textPhone.click();
-		textPhone.sendKeys("12345678901");
+		textPhone.sendKeys("12345678901");*/
+
+		getEnumDriverResgisterElements.getEt_phone_id().click();
+		getEnumDriverResgisterElements.getEt_phone_id().sendKeys("12345678901");
+
 
 		/*获取验证码*/
 		driver.findElement(By.id("cn.caocaokeji.driver:id/bt_get_validate_code")).click();

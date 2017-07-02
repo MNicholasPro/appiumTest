@@ -57,9 +57,7 @@ public class SwipeTo {
      */
     public static void swipeToLeft(AppiumDriver<AndroidElement> driver,int during, int num) {
         int width = driver.manage().window().getSize().width;
-        System.out.println(width);
         int height = driver.manage().window().getSize().height;
-        System.out.println(height);
         for (int i = 0; i < num; i++) {
 
             try {

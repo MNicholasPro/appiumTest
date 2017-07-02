@@ -4,7 +4,7 @@
     <parameter name="environment" value="main" />
     <test name="Test1">
         <classes>
-            <class name="test.CaocaoDriverTest"/>
+            <class name="test.CaocaoDriverRegisterTest"/>
         </classes>
     </test> <!-- Test -->
 </suite> <!-- Suite -->
