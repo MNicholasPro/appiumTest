@@ -18,12 +18,15 @@ import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
 import pageObject.EnumDriverResgisterElements;
 
-public class CaocaoDriverRegisterTest {
+public class CaocaoDriverRegisterTest extends GetEnumDriverResgisterElements{
 //	private static AppiumDriver driver;
-	public static AndroidDriver<AndroidElement> driver;
+//	public static AndroidDriver<AndroidElement> driver;
 
 	@BeforeClass
-	public static void setUp() throws MalformedURLException{
+	public static void setup() throws MalformedURLException{
+		AndroidDriver<AndroidElement> driver = setUp();
+	}
+/*	public static void setUp() throws MalformedURLException{
 		DesiredCapabilities caps = new DesiredCapabilities();
 		caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, "5.1.1");
 		caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
@@ -31,10 +34,11 @@ public class CaocaoDriverRegisterTest {
 		caps.setCapability("appPackage", "cn.caocaokeji.driver");
 		caps.setCapability("appActivity", ".activity.ActLoading");
 		driver = new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"), caps);
-	}
+	}*/
 
 	@Test
 	public void test() throws IOException{
+
 
 		GetEnumDriverResgisterElements getEnumDriverResgisterElements = new GetEnumDriverResgisterElements();
 
